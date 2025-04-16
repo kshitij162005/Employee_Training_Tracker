@@ -1,4 +1,4 @@
 # Employee_Training_Tracker
 
 
-Let's Begin 🚀
+Let's make Employee Training Tracker 🚀
