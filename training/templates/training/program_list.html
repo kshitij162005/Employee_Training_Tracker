@@ -1,0 +1,8 @@
+<h2>All Training Programs</h2>
+<a href="{% url 'program_create' %}">Add New Program</a>
+<ul>
+  {% for prog in programs %}
+    <li>{{ prog.title }} ({{ prog.trainer_name }})</li>
+  {% endfor %}
+</ul>
+<a href="{% url 'home' %}">Home</a>

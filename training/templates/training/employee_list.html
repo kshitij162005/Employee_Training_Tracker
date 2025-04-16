@@ -1,0 +1,8 @@
+<h2>All Employees</h2>
+<a href="{% url 'employee_create' %}">Add New Employee</a>
+<ul>
+  {% for emp in employees %}
+    <li>{{ emp.name }} – {{ emp.designation }}</li>
+  {% endfor %}
+</ul>
+<a href="{% url 'home' %}">Home</a>
