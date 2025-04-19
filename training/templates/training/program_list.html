@@ -1,8 +1,20 @@
-<h2>All Training Programs</h2>
-<a href="{% url 'program_create' %}">Add New Program</a>
-<ul>
-  {% for prog in programs %}
-    <li>{{ prog.title }} ({{ prog.trainer_name }})</li>
-  {% endfor %}
-</ul>
-<a href="{% url 'home' %}">Home</a>
+{% extends 'base.html' %}
+{% block title %}Training Programs{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>All Training Programs</h2>
+    <a class="btn" href="{% url 'program_create' %}">Add New Program</a>
+
+    <ul class="card-list">
+        {% for prog in programs %}
+            <li class="card">
+                <strong>{{ prog.title }}</strong><br>
+                Trainer: {{ prog.trainer_name }}
+            </li>
+        {% empty %}
+            <li class="card">No training programs found.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

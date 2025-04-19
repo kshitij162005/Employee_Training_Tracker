@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Welcome to the Dashboard!</h2>
+    <p>Select an option to proceed:</p>
+
+    <div class="dashboard">
+        <a class="card-link" href="{% url 'employee_create' %}">
+            <div class="card">
+                <h3>Add Employee</h3>
+                <p>Register a new employee.</p>
+            </div>
+        </a>
+
+        <a class="card-link" href="{% url 'program_create' %}">
+            <div class="card">
+                <h3>Add Training</h3>
+                <p>Create a new training program.</p>
+            </div>
+        </a>
+
+        <a class="card-link" href="{% url 'enroll_employee' %}">
+            <div class="card">
+                <h3>Enroll Employee</h3>
+                <p>Enroll employees into a training program.</p>
+            </div>
+        </a>
+
+        <a class="card-link" href="{% url 'employee_list' %}">
+            <div class="card">
+                <h3>View All Employees</h3>
+                <p>See all employees in the system.</p>
+            </div>
+        </a>
+
+        <a class="card-link" href="{% url 'enrollment_list' %}">
+            <div class="card">
+                <h3>View Enrollments</h3>
+                <p>Review employee enrollments in training.</p>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}

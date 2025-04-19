@@ -1,7 +1,15 @@
-<h2>Add Employee</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Save</button>
-</form>
-<a href="{% url 'employee_list' %}">Back to Employees</a>
+{% extends 'base.html' %}
+{% block title %}Add Employee{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Add New Employee</h2>
+    <form method="post" class="form">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,8 +1,39 @@
-<h2>All Employees</h2>
-<a href="{% url 'employee_create' %}">Add New Employee</a>
-<ul>
-  {% for emp in employees %}
-    <li>{{ emp.name }} – {{ emp.designation }}</li>
-  {% endfor %}
-</ul>
-<a href="{% url 'home' %}">Home</a>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Employees{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>All Employees</h2>
+
+    <!-- Filter Form for Department -->
+    <div class="filters">
+        <form method="get" action="">
+            <label for="department">Department:</label>
+            <select name="department" id="department">
+                <option value="">All Departments</option>
+                {% for dept in departments %}
+                <option value="{{ dept.department }}" {% if request.GET.department == dept.department %}selected{% endif %}>{{ dept.department }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Filter</button>
+        </form>
+    </div>
+
+    <a class="btn" href="{% url 'employee_create' %}">Add New Employee</a>
+
+    <ul class="card-list">
+        {% for emp in employees %}
+            <li class="card">
+                <div class="card-header">
+                    <h3>{{ emp.name }}</h3>
+                    <p>{{ emp.designation }}</p> <!-- Display designation -->
+                    <p>Department: {{ emp.department }}</p> <!-- Display department -->
+                </div>
+            </li>
+        {% empty %}
+            <li class="card">No employees found.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -8,6 +8,7 @@ from .models import Employee, TrainingProgram, Enrollment
 class EmployeeAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'department', 'designation')  
     search_fields = ('name', 'email', 'department', 'designation')
+    list_filter = ('department',)
 
 # Training Program Admin Registration
 @admin.register(TrainingProgram)

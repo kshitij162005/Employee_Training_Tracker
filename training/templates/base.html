@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Employee Training Tracker{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'training/styles.css' %}">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Employee Training Tracker</h1>
+        <nav>
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'employee_list' %}">Employees</a>
+            <a href="{% url 'program_list' %}">Training Programs</a>
+            <a href="{% url 'enroll_employee' %}">Enroll Employee</a>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Employee Training Tracker | All rights reserved.</p>
+    </footer>
+</body>
+</html>
