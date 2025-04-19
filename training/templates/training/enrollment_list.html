@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% block title %}All Enrollments{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #001f21;
+        color: #AFDDE5;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #003135;
+        border-radius: 16px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    h2 {
+        text-align: center;
+        color: #0FA4AF;
+        margin-bottom: 30px;
+        font-size: 32px;
+    }
+
+    .styled-table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+        border-radius: 12px;
+    }
+
+    .styled-table thead {
+        background-color: #024950;
+    }
+
+    .styled-table th,
+    .styled-table td {
+        padding: 14px 20px;
+        text-align: left;
+        font-size: 16px;
+        word-wrap: break-word;
+    }
+
+    .styled-table tbody tr {
+        border-bottom: 1px solid #024950;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    .styled-table tbody tr:hover {
+        background-color: #0FA4AF20;
+    }
+
+    .styled-table th {
+        color: #AFDDE5;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    .styled-table td {
+        color: #E3FDFD;
+    }
+
+    @media (max-width: 768px) {
+        .styled-table thead {
+            display: none;
+        }
+
+        .styled-table, .styled-table tbody, .styled-table tr, .styled-table td {
+            display: block;
+            width: 100%;
+        }
+
+        .styled-table tr {
+            margin-bottom: 20px;
+            background-color: #024950;
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+        .styled-table td {
+            text-align: left;
+            padding: 12px;
+            position: relative;
+            padding-left: 140px;
+            font-size: 15px;
+            border-bottom: 1px solid #003135;
+            word-wrap: break-word;
+        }
+
+        .styled-table td::before {
+            content: attr(data-label);
+            position: absolute;
+            left: 16px;
+            top: 12px;
+            font-weight: bold;
+            color: #AFDDE5;
+            text-transform: uppercase;
+        }
+    }
+</style>
+
+<div class="container">
+    <h2>📋 All Enrollments</h2>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Employee</th>
+                <!-- <th>Program</th> -->
+                <!-- <th>Enrolled On</th> -->
+                <th>Program Start</th>
+                <th>Program End</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for e in enrollments %}
+            <tr>
+                <td data-label="Employee">{{ e.employee.name }}</td>
+                <!-- <td data-label="Program">{{ e.training_program.name }}</td> -->
+                <!-- <td data-label="Enrolled On">{{ e.date_enrolled|date:"d M Y" }}</td> -->
+                <td data-label="Program Start">{{ e.training_program.start_date|date:"d M Y" }}</td>
+                <td data-label="Program End">{{ e.training_program.end_date|date:"d M Y" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

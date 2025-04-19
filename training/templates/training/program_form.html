@@ -1,7 +1,17 @@
-<h2>Add Training Program</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Save</button>
-</form>
-<a href="{% url 'program_list' %}">Back to Programs</a>
+{% extends 'base.html' %}
+{% block title %}Add Training{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Create a New Training Program</h2>
+    <form method="post" class="form">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            {{ form.as_p }}
+        </div>
+
+        <button type="submit" class="btn">Create Training Program</button>
+    </form>
+</div>
+{% endblock %}

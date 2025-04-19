@@ -1,10 +1,22 @@
 from django.db import models
 
-# Create your models here.
 class Employee(models.Model):
+    DEPARTMENT_CHOICES = [
+        ('HR', 'Human Resources'),
+        ('IT', 'Information Technology'),
+        ('Sales', 'Sales'),
+        ('Finance', 'Finance'),
+        ('Marketing', 'Marketing'),
+        ('Operations', 'Operations'),
+        ('Legal', 'Legal'),
+        ('Admin', 'Administration'),
+        ('Support', 'Customer Support'),
+        ('QA', 'Quality Assurance'),
+    ]
+
     name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
-    department = models.CharField(max_length=100)
+    department = models.CharField(max_length=100, choices=DEPARTMENT_CHOICES)
     designation = models.CharField(max_length=100)
 
     def __str__(self):
